@@ -1,0 +1,9 @@
+{
+  "name": "csharp-include-generated-code-devcontainer",
+  "image": "ghcr.io/iaingalloway/devcontainers/dotnet:1.1",
+  "runArgs": [
+    "--name",
+    "csharp-include-generated-code-devcontainer",
+    "--network=host"
+  ]
+}

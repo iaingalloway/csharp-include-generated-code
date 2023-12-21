@@ -1,0 +1,36 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net8.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <GeneratedText><![CDATA[
+namespace IncludeGeneratedCode.BaseCase.Generated%3B
+public class GeneratedClass
+{
+    public void HelloWorld()
+    {
+        Console.WriteLine("Hello, world!")%3B
+    }
+}
+      ]]></GeneratedText>
+  </PropertyGroup>
+
+  <Target Name="AddGeneratedFile" BeforeTargets="BeforeCompile;CoreCompile" Inputs="$(MSBuildAllProjects)" Outputs="$(IntermediateOutputPath)GeneratedFile.cs">
+    <PropertyGroup>
+      <GeneratedFilePath>$(IntermediateOutputPath)\Generated\GeneratedClass.cs</GeneratedFilePath>
+    </PropertyGroup>
+
+    <WriteLinesToFile Lines="$(GeneratedText)" File="$(GeneratedFilePath)" WriteOnlyWhenDifferent="true" Overwrite="true" />
+
+    <ItemGroup>
+      <Compile Include="$(GeneratedFilePath)" />
+      <FileWrites Include="$(GeneratedFilePath)" />
+    </ItemGroup>
+  </Target>
+
+</Project>
